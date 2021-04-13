@@ -50,13 +50,6 @@
 							   </c:forEach>
 		   					</select>
 						</form>
-                        <select id="selectBox" class="form-control">
-                           <option value="제목" selected>제목</option>
-                           <option value="이름">이름</option>
-                        </select>
-                     </div>
-                     <label for=""> <input type="text" placeholder="검색"><input type="button"id="search"value="검색">
-                     </label>
 					</td>
 				</tr>
 				<tr>
@@ -146,37 +139,7 @@
 		</div>
 	</div>
 </body>
-<script type="text/javascript">
-	$(function(){
-		$('#search').click(function(){
-			if(keyword == "제목"){
-				$.ajax({
-					url : "search.board",
-					type : "POST",
-					datatype : "JSON",
-					data : {subject : $('#search').val()},
-					success : function(data){
-						$("#tbody").empty();
-						if($("#search").val() != ""){
-							$.each(data, function(key,value){
-							let newtable = $("#tbody");
-								newtable += "<tr>";
-								newtable +="<td>"+value.idx +"<td>";
-								newtable +="<td>"+value.subject +"<td>";
-								newtable +="<td>"+value.writer +"<td>";
-								newtable +="<td>"+value.writedate +"<td>";
-								newtable +="<td>"+value.readnum +"<td>";
-							newtable += "</tr>";
-								
-							})
-						}
-					}
-				})
-			}
-			
-		})
-	})
-</script>
+
 
 
 

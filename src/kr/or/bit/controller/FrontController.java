@@ -14,6 +14,7 @@ import kr.or.bit.action.ActionForward;
 import kr.or.bit.service.BoardContentService;
 import kr.or.bit.service.BoardDeleteService;
 import kr.or.bit.service.BoardDeleteViewService;
+import kr.or.bit.service.BoardDownloadService;
 import kr.or.bit.service.BoardEditService;
 import kr.or.bit.service.BoardEditViewService;
 import kr.or.bit.service.BoardListService;
@@ -109,6 +110,9 @@ public class FrontController extends HttpServlet {
     		action = new BoardRewriteService();
     		forward = action.execute(request, response);
     		System.out.println("BoardRewriteService 실행");
+    	}else if(url_command.equals("/download.board")) {
+    		action = new BoardDownloadService();
+    		forward = action.execute(request, response);	
     	};
     	
     	

@@ -1,5 +1,7 @@
 package kr.or.bit.service;
 
+import java.util.List;
+
 import javax.naming.NamingException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -7,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import kr.or.bit.action.Action;
 import kr.or.bit.action.ActionForward;
 import kr.or.bit.dao.BoardDao;
+import kr.or.bit.dto.Reply;
 
 public class BoardReplyService implements Action {
 
@@ -25,6 +28,9 @@ public class BoardReplyService implements Action {
 		try {
 			BoardDao dao = new BoardDao();
 			int result = dao.replywrite(Integer.parseInt(idx_fk), writer, userid, content, pwd);
+			
+			// List<Reply> relist = dao.replylist(idx_fk);
+			
 			
 			//처리하는 코드
 			String msg = "";

@@ -43,7 +43,7 @@
 						<td width="20%" align="center"><b>홈페이지</b></td>
 						<td>${board.homepage}</td>
 						<td width="20%" align="center"><b>첨부파일</b></td>
-						<td>${board.filename}</td>
+						<td><a href="download.board?filename=${board.filename}">${board.filename}</a></td>
 					</tr>
 					<tr>
 						<td width="20%" align="center"><b>제목</b></td>
@@ -81,7 +81,7 @@
 							</td>
 							<td align="left">비밀번호: <input type="password"
 								name="reply_pwd" size="4"> <input type="button"
-								value="등록" onclick="reply_check()">
+								value="등록" onclick="reply_check()" id ="reply">
 							</td>
 						</tr>
 					</table>
@@ -137,5 +137,24 @@
 		</div>
 	</div>
 </body>
+<script type="text/javascript">
+	&(function(){
+		$('#reply').click(function(){
+			var param = {
+					"idx":${board.idx},
+					"writer":${board.writer},
+					"content":${board.content},
+					"pwd":${board.pwd};
+			}
+			$.ajax({
+				url:"replyok.board",
+				type:"text",
+				data:"param",
+				
+			})
+			
+		})
+	})
+</script>
 </html>
 
